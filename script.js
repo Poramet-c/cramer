@@ -41,14 +41,19 @@ function createTable(n) {
     document.getElementById('submit-data').style.display = 'inline';
 }
 
-document.getElementById('submit-data').addEventListener('click', function() {
+window.addEventListener('load', function() {
+    let defaultN = 3; // Default size
+    document.getElementById('n-value').value = defaultN;
+    createTable(defaultN);
+});
+
+document.getElementById('submit-data').addEventListener('click', async function() {
     let n = document.getElementById('n-value').value;
     let data = [];
-    let vector = [] ;
-    
+    let vector = [];
+
     // Show the spinner and loading text
     document.getElementById('spinner').style.display = 'inline-block';
-    document.getElementById('loading-text').style.display = 'block';
     document.getElementById('result-text').style.display = 'none'; // Hide result text initially
 
     // Collect the data from the table
@@ -56,9 +61,7 @@ document.getElementById('submit-data').addEventListener('click', function() {
         let row = [];
         for (let j = 0; j < n; j++) {
             let value = document.getElementById(`input-${i}-${j}`).value;
-
             if (value === '') value = '0'; // Default value if empty
-            
             row.push(Number(value)); // Convert to number
         }
         data.push(row);
@@ -70,25 +73,26 @@ document.getElementById('submit-data').addEventListener('click', function() {
         if (value === '') value = '0'; // Default value if empty
         vector.push(Number(value));
     }
-    
-    setTimeout(function() {
-        // Calculate the determinant
-        let det = determinant(data);
-        console.log("2D Array:", data);
-        console.log("Determinant:", det);
 
-        // Hide the spinner and loading text
-        document.getElementById('spinner').style.display = 'none';
-        document.getElementById('loading-text').style.display = 'none';
-        
-        // Show the result
-        document.getElementById('result-text').style.display = 'block';
-        document.getElementById('result-value').textContent = det.toFixed(3);
-    }, 100); // Small timeout to allow the spinner to appear
+    // Delay the heavy computation by a small time to allow the spinner to render
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
+    // Perform the computation after the spinner is shown
+    let det = determinant(data);
+    console.log("2D Array:", data);
+    console.log("Determinant:", det);
+
+    // Hide the spinner and loading text
+    document.getElementById('spinner').style.display = 'none';
+
+    // Show the result
+    document.getElementById('result-text').style.display = 'block';
+    document.getElementById('result-value').textContent = det.toFixed(3);
+
+    // Display other results
     displayAdjoint(data);
     displayInverse(data);
-    displayMatrixVectorResult(inverse(data),vector)
+    displayMatrixVectorResult(inverse(data), vector);
 });
 
 document.getElementById('n-form').addEventListener('submit', function(event) {

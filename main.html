@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cramer's Rule by PFONT</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="pclogo.ico">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+<body>
+
+<nav>
+    <img src="pclogo2.svg" alt="">
+    <img src="nrlogo.png" alt="">
+    
+    <p>
+        <h1>Cramer's Rule by PFONT</h1><br>
+    </p>
+</nav>
+
+<form id="n-form">
+    <label for="n-value">Enter a number (n):</label>
+    <input type="number" id="n-value" name="n-value" required min="1" value="3">
+    <button type="submit">Create Table</button>
+</form>
+
+<div class="input-container">  
+    <div id="input-table" class="inputs"></div>
+    <div id="input-vector" class="inputs"></div>
+    <button id="submit-data" style="display:none;">Submit Data</button>
+</div>
+
+<!-- Spinner and loading message -->
+<div class="spinner-container">
+    <div id="spinner">
+        <svg width="329" height="329" viewBox="0 0 329 329" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="164.5" cy="164.5" r="164.5" fill="white"/>
+            <rect x="165" width="164" height="164" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M165 62.0005C164.888 62.0002 164.777 62 164.665 62C108.517 62 63 107.517 63 163.665C63 219.813 108.517 265.33 164.665 265.33C220.701 265.33 266.149 219.994 266.329 164H165V62.0005Z" fill="#100026" fill-opacity="0.33">
+                <animateTransform 
+                    attributeName="transform" 
+                    type="rotate" 
+                    from="0 164.5 164.5" 
+                    to="360 164.5 164.5" 
+                    dur="1s" 
+                    repeatCount="indefinite"/>
+            </path>
+            <circle cx="164.835" cy="160.835" r="62.835" fill="#100026"/>
+            <circle cx="322.5" cy="6.5" r="6.5" transform="rotate(-90 322.5 6.5)" fill="#100026" fill-opacity="0.13"/>
+        </svg>
+    </div>
+</div>
+
+<!-- Add this to your HTML where you want to display the result -->
+<div id="result-container" class="txt">
+    <p id="result-text" style="display:none;">Determinant: <span id="result-value"></span></p>
+</div>
+
+<!-- Add this to your HTML to display the adjoint matrix -->
+<div id="adjoint-container" class="txt">
+    <p id="adjoint-text" style="display:none;">Adjoint Matrix:</p>
+    <div id="adjoint-matrix" style="display:none;"></div>
+</div>
+
+<!-- Add this to your HTML to display the inverse matrix -->
+<div id="inverse-container" class="txt">
+    <p id="inverse-text" style="display:none;">Inverse Matrix:</p>
+    <div id="inverse-matrix" style="display:none;"></div>
+</div>
+
+<!-- Add this to your HTML to display the singular matrix message -->
+<div id="singular-container" class="txt">
+    <p id="singular-text" style="display:none; color: red;">The matrix is singular and cannot be inverted.</p>
+</div>
+
+<!-- Add this to your HTML to contain the result vector -->
+<div id="result-vector-container" class="txt">
+    <p id="result-vector-text" style="display:none;">Resulting Matrix (n x 1):</p>
+    <div id="result-vector" style="display:none;"></div>
+</div>
+
+
+
+<!-- SCRIPT  -->
+<script src="script.js"></script>
+
+<!-- <footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h2>About Us</h2>
+            <p>We, PFONT, are learners who are willing to do anything we wish to.</p>
+        </div>
+         <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div> 
+        <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <p>Email: stu32998@nangrong.ac.th</p>
+             <p>Phone: +123-456-7890</p> 
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 poramet-c. All Rights Reserved.</p>
+    </div>
+</footer> -->
+
+</body>
+</html>
