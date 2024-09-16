@@ -92,7 +92,9 @@ document.getElementById('submit-data').addEventListener('click', async function(
     // Display other results
     displayAdjoint(data);
     displayInverse(data);
-    displayMatrixVectorResult(inverse(data), vector);
+
+    if (det != 0)
+        displayMatrixVectorResult(inverse(data), vector);
 });
 
 document.getElementById('n-form').addEventListener('submit', function(event) {
