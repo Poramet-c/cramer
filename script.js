@@ -41,11 +41,11 @@ function createTable(n) {
     document.getElementById('submit-data').style.display = 'inline';
 }
 
-window.addEventListener('load', function() {
-    let defaultN = 3; // Default size
-    document.getElementById('n-value').value = defaultN;
-    createTable(defaultN);
-});
+// window.addEventListener('load', function() {
+//     let defaultN = 3; // Default size
+//     document.getElementById('n-value').value = defaultN;
+//     createTable(defaultN);
+// });
 
 document.getElementById('submit-data').addEventListener('click', async function() {
     let n = document.getElementById('n-value').value;
